@@ -5,15 +5,11 @@ import (
     "regexp"
 )
 
-// variable name rules: contains only ASCII [A-Za-z0-9_] and doesn't start with a number
-const (
-    varStartChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
-    varChars = varStartChars + "0123456789"
+var (
+    validVarnameRe   = regexp.MustCompile("^[A-Za-z_][A-Za-z0-9_]*$")
+    validStartCharRe = regexp.MustCompile("^[A-Za-z_]")
+    invalidVarCharRe = regexp.MustCompile("[^A-Za-z0-9_]")
 )
-
-var validVarnameRe = regexp.MustCompile(fmt.Sprintf("^[%s][%s]*$", varStartChars, varChars))
-var validStartCharRe = regexp.MustCompile(fmt.Sprintf("^[%s]", varStartChars))
-var invalidVarCharRe = regexp.MustCompile(fmt.Sprintf("[^%s]", varChars))
 
 func CheckVarname(f string) bool {
     return f != "_" && validVarnameRe.MatchString(f)

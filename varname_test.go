@@ -32,6 +32,7 @@ func TestFilenameToVarname(t *testing.T) {
     }{
         {"", "", true},
         {"_", "", true},
+        {"validIdent", "validIdent", false},
         {"example.conf", "example_conf", false},
         {"hello - world.txt", "hello_world_txt", false},
         {"0foo_____", "_0foo", false},
