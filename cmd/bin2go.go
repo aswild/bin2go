@@ -1,14 +1,14 @@
 package main
 
 import (
-    "bin2go"
-
     "bytes"
     "flag"
     "fmt"
     "io"
     "os"
     "strings"
+
+    "github.com/aswild/bin2go"
 )
 
 var opts struct {

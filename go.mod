@@ -1,1 +1,1 @@
-module bin2go
+module github.com/aswild/bin2go
